@@ -7,8 +7,7 @@
         android:layout_height="wrap_content"
         android:text="Restaurants near "
         android:id="@+id/locationTextView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:paddingTop="10dp"/>
 
     <ListView
         android:layout_width="match_parent"
