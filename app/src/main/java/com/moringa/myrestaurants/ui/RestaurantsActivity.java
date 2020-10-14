@@ -3,13 +3,8 @@ package com.moringa.myrestaurants.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.myrestaurants.adapters.RestaurantListAdapter;
 import com.moringa.myrestaurants.models.Business;
-import com.moringa.myrestaurants.models.Category;
-import com.moringa.myrestaurants.MyRestaurantsArrayAdapter;
 import com.moringa.myrestaurants.R;
 import com.moringa.myrestaurants.YelpBusinessesSearchResponse;
 import com.moringa.myrestaurants.network.YelpApi;
@@ -71,7 +64,8 @@ public class RestaurantsActivity extends AppCompatActivity {
                     mRecycleView.setHasFixedSize(true);// informs recycle view that its width and height should remain the same.
 
                     showRestaurants();
-                } else {
+                }
+                else {
                     showUnsuccessfulMessage();
                 }
             }

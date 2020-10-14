@@ -48,17 +48,17 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
     public class RestaurantViewHolder extends  RecyclerView.ViewHolder{
         @BindView(R.id.restaurantImageView) ImageView mRestaurantImageView;
-        @BindView(R.id.restaurantNameTextView) TextView mRestaurantsNameTextView;
+        @BindView(R.id.restaurantsNameTextView) TextView mRestaurantsNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
         @BindView(R.id.ratingTextView) TextView mRatingTextView;
 
-        private Context context;
+        private Context mContext;
 
 
         public RestaurantViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            context = itemView.getContext();
+            mContext = itemView.getContext();
         }
 
         public void bindRestaurant(Business restaurant){
