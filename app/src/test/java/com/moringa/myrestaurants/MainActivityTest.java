@@ -36,7 +36,7 @@ public class MainActivityTest {
 //    public void clickingLogin_shouldStartLoginActivity() {
 //        MainActivity activity = Robolectric.setupActivity(MainActivity.class);
 //        activity.findViewById(R.id.loginButton).performClick();
-//        Intent expectedIntent = new Intent(activity, RestaurantsActivity.class);
+//        Intent expectedIntent = new Intent(activity, RestaurantsListActivity.class);
 //        Intent actual = shadowOf(RuntimeEnvironment.application).getNextStartedActivity();
 //        assertEquals(expectedIntent.getComponent(), actual.getComponent());
 //    }

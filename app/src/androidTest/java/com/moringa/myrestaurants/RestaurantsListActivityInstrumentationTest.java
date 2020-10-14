@@ -5,7 +5,7 @@ import android.view.View;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import com.moringa.myrestaurants.ui.RestaurantsActivity;
+import com.moringa.myrestaurants.ui.RestaurantsListActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -23,10 +23,10 @@ import static org.hamcrest.Matchers.not;
 
 
 @RunWith(AndroidJUnit4.class)
-public class RestaurantsActivityInstrumentationTest {
+public class RestaurantsListActivityInstrumentationTest {
     @Rule
-    public ActivityTestRule<RestaurantsActivity> activityTestRule =
-            new ActivityTestRule<>(RestaurantsActivity.class);
+    public ActivityTestRule<RestaurantsListActivity> activityTestRule =
+            new ActivityTestRule<>(RestaurantsListActivity.class);
 
 
     @Test

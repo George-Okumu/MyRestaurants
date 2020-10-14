@@ -26,8 +26,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RestaurantsActivity extends AppCompatActivity {
-    private static final String TAG = RestaurantsActivity.class.getSimpleName();
+public class RestaurantsListActivity extends AppCompatActivity {
+    private static final String TAG = RestaurantsListActivity.class.getSimpleName();
 
     @BindView(R.id.recyclerView) RecyclerView mRecycleView;
     private RestaurantListAdapter mAdapter;
@@ -57,9 +57,9 @@ public class RestaurantsActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     restaurants = response.body().getBusinesses();
-                    mAdapter = new RestaurantListAdapter(RestaurantsActivity.this, restaurants);
+                    mAdapter = new RestaurantListAdapter(RestaurantsListActivity.this, restaurants);
                     mRecycleView.setAdapter(mAdapter);
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantsActivity.this);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantsListActivity.this);
                     mRecycleView.setLayoutManager(layoutManager);
                     mRecycleView.setHasFixedSize(true);// informs recycle view that its width and height should remain the same.
 
