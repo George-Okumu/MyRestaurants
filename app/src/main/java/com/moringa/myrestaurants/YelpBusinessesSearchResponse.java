@@ -4,6 +4,7 @@ package com.moringa.myrestaurants;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.moringa.myrestaurants.models.Business;
 
 public class YelpBusinessesSearchResponse {
 
@@ -15,7 +16,7 @@ public class YelpBusinessesSearchResponse {
     private List<Business> businesses = null;
     @SerializedName("region")
     @Expose
-    private Region region;
+    private Business.Region region;
 
     /**
      * No args constructor for use in serialization
@@ -30,7 +31,7 @@ public class YelpBusinessesSearchResponse {
      * @param region
      * @param businesses
      */
-    public YelpBusinessesSearchResponse(Integer total, List<Business> businesses, Region region) {
+    public YelpBusinessesSearchResponse(Integer total, List<Business> businesses, Business.Region region) {
         super();
         this.total = total;
         this.businesses = businesses;
@@ -53,11 +54,11 @@ public class YelpBusinessesSearchResponse {
         this.businesses = businesses;
     }
 
-    public Region getRegion() {
+    public Business.Region getRegion() {
         return region;
     }
 
-    public void setRegion(Region region) {
+    public void setRegion(Business.Region region) {
         this.region = region;
     }
 

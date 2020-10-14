@@ -1,5 +1,5 @@
 
-package com.moringa.myrestaurants;
+package com.moringa.myrestaurants.models;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
@@ -78,7 +78,7 @@ public class Business {
      * @param id
      * @param categories
      */
-    public Business(double rating, String price, String phone, String id, String alias, Boolean isClosed, List<Category> categories, Integer reviewCount, String name, String url, Coordinates coordinates, String imageUrl, Location location, Double distance, List<String> transactions) {
+    public Business(Double rating, String price, String phone, String id, String alias, Boolean isClosed, List<Category> categories, Integer reviewCount, String name, String url, Coordinates coordinates, String imageUrl, Location location, Double distance, List<String> transactions) {
         super();
         this.rating = rating;
         this.price = price;
@@ -97,11 +97,11 @@ public class Business {
         this.transactions = transactions;
     }
 
-    public double getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
@@ -217,4 +217,35 @@ public class Business {
         this.transactions = transactions;
     }
 
+    public static class Region {
+
+        @SerializedName("center")
+        @Expose
+        private Center center;
+
+        /**
+         * No args constructor for use in serialization
+         *
+         */
+        public Region() {
+        }
+
+        /**
+         *
+         * @param center
+         */
+        public Region(Center center) {
+            super();
+            this.center = center;
+        }
+
+        public Center getCenter() {
+            return center;
+        }
+
+        public void setCenter(Center center) {
+            this.center = center;
+        }
+
+    }
 }
