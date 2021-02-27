@@ -1,6 +1,7 @@
 package com.moringa.myrestaurants.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringa.myrestaurants.R;
 import com.moringa.myrestaurants.models.Business;
+import com.moringa.myrestaurants.ui.RestaurantDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -27,6 +31,8 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         mContext = context;
         mRestaurants = restaurants;
     }
+
+
 //Inflates the layout
     @Override
     public RestaurantListAdapter.RestaurantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -47,7 +53,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         return mRestaurants.size();
     }
 
-    public class RestaurantViewHolder extends  RecyclerView.ViewHolder{
+    public class RestaurantViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.restaurantImageView) ImageView mRestaurantImageView;
         @BindView(R.id.restaurantsNameTextView) TextView mRestaurantsNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
@@ -60,7 +66,19 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            //used getAdapterPosition instead of layoutPosition
+            int itemPosition = getAdapterPosition();
+            Intent intent = new Intent(mContext, RestaurantDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("restaurants", Parcels.wrap(mRestaurants));
+            mContext.startActivity(intent);
+        }
+
 
         public void bindRestaurant(Business restaurant){
             Picasso.get().load(restaurant.getImageUrl()).into(mRestaurantImageView);// allows Picasso to handle the image loading
@@ -68,6 +86,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             mCategoryTextView.setText(restaurant.getCategories().get(0).getTitle());
             mRatingTextView.setText("Rating "+ restaurant.getRating() + "/5");
         }
+
     }
 
 }
