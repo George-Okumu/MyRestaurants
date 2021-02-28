@@ -7,12 +7,14 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringa.myrestaurants.Constants;
@@ -25,6 +27,7 @@ import static com.moringa.myrestaurants.Constants.FIREBASE_LOCATION_SEARCHED_LOC
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = " in MainActivity";
 //    private Button mFindRestaurantsButton;
 //    private EditText mLocationEditText;
 
@@ -35,8 +38,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     
 
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mEditor;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+
 
     private DatabaseReference mSearchedLocationReference;
 
@@ -60,8 +64,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        mAppNameTextView.setTypeface(ostrichFont);
 
 
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mEditor = mSharedPreferences.edit();
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
 
         mFindRestaurantsButton.setOnClickListener(this);
     }
@@ -70,10 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v == mFindRestaurantsButton){
 
             String location = mLocationEditText.getText().toString();
-//            if(!(location).equals("")){
-//                addToSharedPreferences(location);
-            saveLocationToFirebase(location);
-//            }
+            addToSharedPreferences(location);
             Intent intent = new Intent(MainActivity.this, RestaurantsListActivity.class);
             intent.putExtra("location", location);
             startActivity(intent);
@@ -85,7 +86,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSearchedLocationReference.setValue(location);
     }
 
-//            public void addToSharedPreferences(String location){
-//        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();;
-//            }
+    public void addToSharedPreferences(String location) {
+        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+
+    }
 }

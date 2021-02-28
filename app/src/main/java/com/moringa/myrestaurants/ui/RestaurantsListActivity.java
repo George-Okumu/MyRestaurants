@@ -33,8 +33,8 @@ import retrofit2.Response;
 public class RestaurantsListActivity extends AppCompatActivity {
     private static final String TAG = RestaurantsListActivity.class.getSimpleName();
 
-//    private SharedPreferences mSharedPreference;
-    private String mAddress;
+    private SharedPreferences mSharedPreference;
+    private String mSavedPreferenceLocation;
 
     @BindView(R.id.recyclerView) RecyclerView mRecycleView;
     private RestaurantListAdapter mAdapter;
@@ -50,9 +50,9 @@ public class RestaurantsListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-//        mSharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
-//        mAddress = mSharedPreference.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-//        Log.d("Shared Pref Location", mAddress);
+        mSharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
+        mSavedPreferenceLocation = mSharedPreference.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        Log.d("Shared Pref Location", mSavedPreferenceLocation);
 //        if(mAddress != null){
 //
 //        }
