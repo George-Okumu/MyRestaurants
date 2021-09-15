@@ -7,7 +7,7 @@ public class Constants {
     //Acts as the key to our shared preference
     public static final String PREFERENCES_LOCATION_KEY = "location";
     public static final String FIREBASE_LOCATION_SEARCHED_LOCATION = "searchedLocation";
-    public static final String ANOTHER_LOCATION_SEARCHED_LOCATION = "mine";
+    public static final String FIREBASE_SAVED_RESTAURANTS = "restaurants";
 
 
 }

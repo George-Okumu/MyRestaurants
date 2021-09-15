@@ -1,9 +1,7 @@
 package com.moringa.myrestaurants.ui;
 
 import android.content.Intent;
-import android.media.audiofx.DynamicsProcessing;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,7 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moringa.myrestaurants.Constants;
 import com.moringa.myrestaurants.R;
 import com.moringa.myrestaurants.models.Business;
 import com.moringa.myrestaurants.models.Category;
@@ -48,7 +48,7 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
     @BindView(R.id.saveRestaurantButton) TextView mSaveRestaurantButton;
 
     // TODO: Rename and change types of parameters
-    private Business mRestaurant;
+    private Business restaurant;
 
     public RestaurantDetailFragment() {
         // Required empty public constructor
@@ -74,31 +74,32 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRestaurant = Parcels.unwrap(getArguments().getParcelable("restaurant"));
+        restaurant = Parcels.unwrap(getArguments().getParcelable("restaurant"));
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_restaurant_detail, container, false);
         ButterKnife.bind(this, view);
 
-        Picasso.get().load(mRestaurant.getImageUrl()).into(mImageLabel);
+        Picasso.get().load(restaurant.getImageUrl()).into(mImageLabel);
 
         List<String> categories = new ArrayList<>();
 
-        for (Category category: mRestaurant.getCategories()) {
+        for (Category category: restaurant.getCategories()) {
             categories.add(category.getTitle());
         }
 
-        mNameLabel.setText(mRestaurant.getName());
+        mNameLabel.setText(restaurant.getName());
         mCategoriesLabel.setText(android.text.TextUtils.join(", ", categories));
-        mRatingLabel.setText(Double.toString(mRestaurant.getRating()) + "/5");
-        mPhoneLabel.setText(mRestaurant.getPhone());
-        mAddressLabel.setText(mRestaurant.getLocation().toString());
+        mRatingLabel.setText(Double.toString(restaurant.getRating()) + "/5");
+        mPhoneLabel.setText(restaurant.getPhone());
+        mAddressLabel.setText(restaurant.getLocation().toString());
 
         //Setting up of Implicit intent
         mWebsiteLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
         mAddressLabel.setOnClickListener(this);
+        mSaveRestaurantButton.setOnClickListener(this);
 
         return view;
     }
@@ -107,21 +108,30 @@ public class RestaurantDetailFragment extends Fragment implements View.OnClickLi
     public void onClick(View v) {
         if (v == mWebsiteLabel) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(mRestaurant.getUrl()));
+                    Uri.parse(restaurant.getUrl()));
             startActivity(webIntent);
         }
 
         if (v == mPhoneLabel){
-            Intent PhoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: " + mRestaurant.getPhone()));
+            Intent PhoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: " + restaurant.getPhone()));
             startActivity(PhoneIntent);
         }
 
         if (v == mAddressLabel){
-            Intent addressLabel = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:"+ mRestaurant.getCoordinates().getLatitude() +
-                    "," +mRestaurant.getCoordinates().getLongitude()+
-                    "?q=(" + mRestaurant.getName() + ")"));
+            Intent addressLabel = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:"+ restaurant.getCoordinates().getLatitude() +
+                    "," + restaurant.getCoordinates().getLongitude()+
+                    "?q=(" + restaurant.getName() + ")"));
             startActivity(addressLabel);
         }
+        if (v == mSaveRestaurantButton) {
+            DatabaseReference databaseReference = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_SAVED_RESTAURANTS);
+            databaseReference.push().setValue(restaurant);
+            Log.d(TAG, "onClick: Saved Succesfully");
+            Toast.makeText(getContext(),"Restaurant saved succesfully", Toast.LENGTH_LONG).show();
+        }
+
 
     }
 }

@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //instantiating it here
         //pass in Firebase_location_searched location a an argument.
         reference = FirebaseDatabase
+                //gets instance of the firebasedatabase for a specific dfirebase appp
                 .getInstance()
+                //get reference gets dtabasereference for the database node
                 .getReference()
                 .child(FIREBASE_LOCATION_SEARCHED_LOCATION);
 
