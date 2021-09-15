@@ -34,7 +34,8 @@ public class RestaurantsListActivity extends AppCompatActivity {
     private static final String TAG = RestaurantsListActivity.class.getSimpleName();
 
     private SharedPreferences mSharedPreference;
-    private String mSavedPreferenceLocation;
+    private String mRecent;
+
 
     @BindView(R.id.recyclerView) RecyclerView mRecycleView;
     private RestaurantListAdapter mAdapter;
@@ -51,10 +52,12 @@ public class RestaurantsListActivity extends AppCompatActivity {
 
 
         mSharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
-        mSavedPreferenceLocation = mSharedPreference.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        Log.d("Shared Pref Location", mSavedPreferenceLocation);
-//        if(mAddress != null){
-//
+        mRecent = mSharedPreference.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        Log.d("Shared Preference", mRecent);
+
+//        if(mSavedPreferenceLocation != null){
+//            YelpApi client = YelpClient.getClient();
+//            client.getRestaurants(mSavedPreferenceLocation);
 //        }
 
         Intent intent = getIntent();

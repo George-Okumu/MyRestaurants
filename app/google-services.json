@@ -1,21 +1,20 @@
 {
   "project_info": {
-    "project_number": "199864030544",
-    "firebase_url": "https://my-restaurants-e87e8.firebaseio.com",
-    "project_id": "my-restaurants-e87e8",
-    "storage_bucket": "my-restaurants-e87e8.appspot.com"
+    "project_number": "555858970962",
+    "project_id": "georestaurants-652e0",
+    "storage_bucket": "georestaurants-652e0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:199864030544:android:f2f0d2d617775a960dc855",
+        "mobilesdk_app_id": "1:555858970962:android:644bf4592088d72de7128b",
         "android_client_info": {
           "package_name": "com.moringa.myrestaurants"
         }
       },
       "oauth_client": [
         {
-          "client_id": "199864030544-g11ro7c4ims3q8hcenpbr5m9s727guml.apps.googleusercontent.com",
+          "client_id": "555858970962-ibdcjuvlf3vh4b9k61esci6a6e9ln7oc.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.moringa.myrestaurants",
@@ -23,20 +22,20 @@
           }
         },
         {
-          "client_id": "199864030544-obq2fve0cbb97ptfc2n8l72h84fokqk2.apps.googleusercontent.com",
+          "client_id": "555858970962-ikvkeg87ii8cb8r4jdnof23eu2pgi1o0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBF4RAIH8OLOeMOrtx9EXcz5DdrhbdFauA"
+          "current_key": "AIzaSyB0L6_2Wy5iGqVzN-Xrljq_RcPxdCcmacg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "199864030544-obq2fve0cbb97ptfc2n8l72h84fokqk2.apps.googleusercontent.com",
+              "client_id": "555858970962-ikvkeg87ii8cb8r4jdnof23eu2pgi1o0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
