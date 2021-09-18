@@ -30,6 +30,17 @@
         android:textColor="@color/colorTextIcons"
         android:background="@color/colorAccent"/>
 
+    <Button
+        android:id="@+id/savedRestaurantsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="322dp"
+        android:background="@color/colorAccent"
+        android:text="My Restaurants"
+        android:textColor="@color/colorTextIcons" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -38,15 +49,16 @@
         app:srcCompat="@drawable/george" />
 
     <EditText
+        android:id="@+id/locationEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/locationEditText"
-        android:background="@color/colorTextIcons"
         android:layout_above="@+id/findRestaurantsButton"
-        android:layout_marginBottom="10dp"
-        android:padding="5dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="118dp"
+        android:background="@color/colorTextIcons"
         android:hint="Enter Zip Code"
-        android:layout_centerHorizontal="true" />
+        android:padding="5dp" />
 
 
 </RelativeLayout>
